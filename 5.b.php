@@ -13,15 +13,23 @@ b. Предположим у нас в программе цены хранят�
     -->
 
 <?php
-$price = 60;
+$price = 21232221;
 $b = 100;
 $price_new = $price / $b;
 $price_x = number_format($price_new, 2, ' рублей ', '');
-$procent = $price_new * 13 / 100;
+$procent = $price_x * 13 / 100;
 $sum = $price_new + $procent;
-
+$sum_x = $sum%10;
 $sum1 = number_format($sum, 2, ' рублей ', '');
-$sum2 = number_format($sum, 2, '.', '');
-
-echo($sum1 . ' копеек и ' . $sum2 . ' руб.');
-// Не получилось использовать % и number_format округляет числа
+$sum2 = number_format($sum, 2, ' рубль ', '');
+$sum3 = number_format($sum, 2, ' рубля ', '');
+$sum4 = number_format($sum, 2, '.', '');
+if ($sum_x == 0 or $sum_x == 5 or $sum_x == 6 or $sum_x == 7 or $sum_x== 8 or $sum_x == 9) {
+    echo($sum1 . ' копеек'. ' и ' . $sum4 . ' руб.');
+}
+else if ($sum_x == 1) {
+    echo($sum2 . ' копеек'. ' и ' . $sum4 . ' руб.');
+}
+else {
+    echo($sum3 . ' копеек'. ' и ' . $sum4 . ' руб.');
+}

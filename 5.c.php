@@ -19,3 +19,16 @@ $IP=115.120.253.123				| 	1937309051
 -->
 
 <?php
+$ip = 2071690107;
+
+if (is_numeric($ip)) {
+  $sum=long2ip($ip);
+}
+else {
+  $y4= substr($ip, 0, 3);
+  $y3= substr($ip, 4, 3);
+  $y2= substr($ip, 8, 3);
+  $y1= substr($ip, 12, 3);
+  $sum = $y4*256**3 + $y3*256**2 + $y2*256**1 + $y1*256**0;
+}
+ echo($sum);
