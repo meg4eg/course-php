@@ -6,3 +6,10 @@ m. Пусть теперь в переменной $lang хранится язы
 -->
 
 <?php
+$arr = [
+  'ru' => ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+  'en' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
+$lang = 'ru';
+$day = 2;
+print($arr[$lang][$day]);

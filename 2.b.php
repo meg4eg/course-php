@@ -6,3 +6,23 @@ b. Написать функцию которая выводит на экран
 -->
 
 <?php
+$range = range(1,10);
+
+function prost($range) {
+  if(7 % 2 == 0) {
+    print('ne prostoe')
+  }
+}
+
+// foreach ($range as $val) {
+// for ($n=2;$n<=$val;$n++) {
+//   if ($val % $n == 0) {
+//     print($val.'ne prostoe '.' ');
+//     break;  
+//   }
+//   else {
+//     print($val.'prostoe '.' ');
+//     break;
+//   }
+// }
+// }
