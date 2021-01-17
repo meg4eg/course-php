@@ -13,23 +13,33 @@ b. Предположим у нас в программе цены хранят�
     -->
 
 <?php
-$price = 21232221;
+$price = 12502;
 $b = 100;
 $price_new = $price / $b;
-$price_x = number_format($price_new, 2, ' рублей ', '');
-$procent = $price_x * 13 / 100;
+$procent = $price_new * 13 / 100;
 $sum = $price_new + $procent;
 $sum_x = $sum%10;
 $sum1 = number_format($sum, 2, ' рублей ', '');
 $sum2 = number_format($sum, 2, ' рубль ', '');
 $sum3 = number_format($sum, 2, ' рубля ', '');
 $sum4 = number_format($sum, 2, '.', '');
-if ($sum_x == 0 or $sum_x == 5 or $sum_x == 6 or $sum_x == 7 or $sum_x== 8 or $sum_x == 9) {
-    echo($sum1 . ' копеек'. ' и ' . $sum4 . ' руб.');
+
+if (substr($sum, -1, 2) == 0 or substr($sum, -1, 2) == 5 or substr($sum, -1, 2) == 6 or substr($sum, -1, 2) == 7 or substr($sum, -1, 2) == 8 or substr($sum, -1, 2) == 9 or substr($sum, -2, 2) == 11 or substr($sum, -2, 2) == 12 or substr($sum, -2, 2) == 13 or substr($sum, -2, 2) == 14) {
+  $kop = 'копеек';
 }
-else if ($sum_x == 1) {
-    echo($sum2 . ' копеек'. ' и ' . $sum4 . ' руб.');
+else if (substr($sum, -1, 2) == 1){
+  $kop = 'копейка';
 }
 else {
-    echo($sum3 . ' копеек'. ' и ' . $sum4 . ' руб.');
+  $kop = 'копейки';
+}
+
+if ($sum_x == 0 or $sum_x == 5 or $sum_x == 6 or $sum_x == 7 or $sum_x== 8 or $sum_x == 9 or substr($sum, -5, 2) == 11 or substr($sum, -5, 2) == 12 or substr($sum, -5, 2) == 13 or substr($sum, -5, 2) == 14)  {
+    echo($sum1 .' ' . $kop. ' и ' . $sum4 . ' руб.');
+}
+else if ($sum_x == 1) {
+    echo($sum2 .' ' .$kop. ' и ' . $sum4 . ' руб.');
+}
+else {
+    echo($sum3 .' ' . $kop. ' и ' . $sum4 . ' руб.');
 }

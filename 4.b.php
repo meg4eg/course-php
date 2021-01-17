@@ -6,13 +6,17 @@ b. В переменной $password хранится шестизначный �
 -->
 
 <?php
-$password = '012345';
+$password = '000145';
 
 for ($i = 0; $i < 1000000; $i++) {
   if ($password == $i && $i > 99999) {
     echo('пароль ' . $i);
   }
   else if ($password == $i && $i < 100000) {
-    echo('пароль 0' . $i);
+    $x= strlen($password)-strlen($i);
+    for ($n=1; $n<=$x; $n++) {
+      $pass_0 .= $n*0;
+    }
+    echo('пароль '.$pass_0 . $i);
   }
 }
