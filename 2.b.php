@@ -6,23 +6,25 @@ b. Написать функцию которая выводит на экран
 -->
 
 <?php
-$range = range(1,10);
+$range = range(1,50);
 
-function prost($range) {
-  if(7 % 2 == 0) {
-    print('ne prostoe')
+function prostoe ($arr) {
+foreach ($arr as $key => $val) {
+  $a = true;
+  for ($n = 2; $n <= $val/2; $n++) {
+    if ($val % $n == 0) {
+      $a = false;
+    }
+  }
+  if ($a == true) {
+    $prost .= $val.' ';
+  }
+  else {
+    $neprost .= $val.' ';
   }
 }
+print('Простые числа в заданном диапазоне: '.$prost.'<br>'.'Составные числа: '.$neprost);
+}
 
-// foreach ($range as $val) {
-// for ($n=2;$n<=$val;$n++) {
-//   if ($val % $n == 0) {
-//     print($val.'ne prostoe '.' ');
-//     break;  
-//   }
-//   else {
-//     print($val.'prostoe '.' ');
-//     break;
-//   }
-// }
-// }
+$test = prostoe($range);
+print($nat);
