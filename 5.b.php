@@ -13,12 +13,14 @@ b. Предположим у нас в программе цены хранят�
     -->
 
 <?php
-$price = 12502;
+$price = 10001;
 $b = 100;
 $price_new = $price / $b;
-$procent = $price_new * 13 / 100;
+$procent = $price_new * 13 / 100; 
 $sum = $price_new + $procent;
 $sum_x = $sum%10;
+$sum_xx = $sum%100;
+$sum = number_format($sum, 2, '.', '');
 $sum1 = number_format($sum, 2, ' рублей ', '');
 $sum2 = number_format($sum, 2, ' рубль ', '');
 $sum3 = number_format($sum, 2, ' рубля ', '');
@@ -34,7 +36,7 @@ else {
   $kop = 'копейки';
 }
 
-if ($sum_x == 0 or $sum_x == 5 or $sum_x == 6 or $sum_x == 7 or $sum_x== 8 or $sum_x == 9 or substr($sum, -5, 2) == 11 or substr($sum, -5, 2) == 12 or substr($sum, -5, 2) == 13 or substr($sum, -5, 2) == 14)  {
+if ($sum_x == 0 or $sum_x == 5 or $sum_x == 6 or $sum_x == 7 or $sum_x== 8 or $sum_x == 9 or $sum_xx == 11 or $sum_xx == 12 or $sum_xx == 13 or $sum_xx == 14)  {
     echo($sum1 .' ' . $kop. ' и ' . $sum4 . ' руб.');
 }
 else if ($sum_x == 1) {
