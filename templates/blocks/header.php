@@ -82,14 +82,16 @@
         <ul class="menu">
           <li class="parent"><a href="/catalog.php">Аренда бытовки</a>
             <ul class="submenu">
-              <li><a href="/catalog.php">Аренда бытовок в Видном</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Домодедово</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Видном</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Домодедово</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Видном</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Домодедово</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Видном</a></li>
-              <li><a href="/catalog.php">Аренда бытовок в Домодедово</a></li>
+              <<?php
+          
+              $category = $database['category'];
+                                        
+              foreach ($category as $key => $value) {
+                $categoryTitle = $value['title'];
+                include('./templates/blocks/submenu.php');
+              }
+          
+              ?>
             </ul>
             <div class="menu-arrows"></div>
           </li>
