@@ -16,10 +16,10 @@ foreach ($arr as $key => $val) {
       $a = false;
     }
   }
-  if ($a == true) {
+  if ($a == true and $val != 1) {
     $prost .= $val.' ';
   }
-  else {
+  else if ($a == false and $val != 1){
     $neprost .= $val.' ';
   }
 }
@@ -27,4 +27,3 @@ print('Простые числа в заданном диапазоне: '.$pros
 }
 
 $test = prostoe($range);
-print($nat);

@@ -11,7 +11,10 @@ b. В переменной $password хранится шестизначный �
 
 -->
 <?php
-$password = "00011";
+$password = 10221112;
+
+function pass($password) {
+$p = '';
 $len = strlen($password);
 for ($a=1; $a<=$len; $a++) {
   $len_x .= $a*0;
@@ -19,15 +22,23 @@ for ($a=1; $a<=$len; $a++) {
 $paslen = 1;
 $paslen .= $len_x;
 
+
 for ($i = 0; $i < $paslen; $i++) {
-  if ($password == $i && $i > 99999) {
-    echo('пароль ' . $i);
+  if ($password === $i) {
+    // echo('паролaь ' . $i);
+    return ('Пароль: '.$i);
   }
-  else if ($password == $i && $i < 100000) {
+  else if ($password == $i) {
     $x = strlen($password)-strlen($i);
     for ($n=1; $n<=$x; $n++) {
       $pass_0 .= $n*0;
+      // print $pass_0;
     }
-    echo('пароль '.$pass_0 . $i);
+    // echo('проль '.$pass_0 . $i);
+    return ('Пароль '.$pass_0.$i);
   }
 }
+}
+
+$t = pass($password);
+echo($t);
