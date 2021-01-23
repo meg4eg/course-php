@@ -40,5 +40,5 @@ for ($i = 0; $i < $paslen; $i++) {
 }
 }
 
-$t = pass($password);
-echo($t);
+
+echo(pass($password));
