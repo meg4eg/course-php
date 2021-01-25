@@ -82,15 +82,15 @@
         <ul class="menu">
           <li class="parent"><a href="/catalog.php">Аренда бытовки</a>
             <ul class="submenu">
-              <<?php
-          
+              <?php
+              
               $category = $database['category'];
                                         
               foreach ($category as $key => $value) {
                 $categoryTitle = $value['title'];
                 include('./templates/blocks/submenu.php');
               }
-          
+            
               ?>
             </ul>
             <div class="menu-arrows"></div>

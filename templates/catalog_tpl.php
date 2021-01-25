@@ -24,7 +24,9 @@ include_once('./templates/blocks/head.php');
         
 
         <div class="grid-container">
-          <h1>Аренда бытовки</h1>
+          <?php
+          include_once('./templates/blocks/h1.php');
+          ?>
         </div>
         <div class="preview_bytovka-wrapper">
           <div class="grid-container">
@@ -47,9 +49,22 @@ include_once('./templates/blocks/head.php');
             ?>
         </div>
       </div>
-        <?php
-        include_once('./templates/blocks/main-photogallery.php');
-        ?>
+      <div class="main_photogallery">
+        <div class="grid-container">
+          <div class="main_photogallery-heading heading">Фотогалерея</div>
+          <div class="main_photogallery-slider slider-arrows slider-dots">
+            <?php
+            $gallery = $database['gallery'];
+                                        
+            foreach ($gallery as $key => $value) {
+              $galleryUrl = $value['address'];
+              $galleryName = $value['name'];
+              include('./templates/blocks/gallery.php');
+            }
+          ?>
+          </div>
+        </div>
+      </div>
 
         <?php
         include_once('./templates/blocks/order-form.php');

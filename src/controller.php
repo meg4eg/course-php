@@ -26,9 +26,9 @@ elseif ($_SERVER['SCRIPT_NAME'] == '/rent.php'){
 }
 
 function printPage($url_key, &$database) { // определяем функцию printPage в которой задаем $url_key и заранее созданную $database, которая будет выводить нужную страницу
-  $data = searchData($database, $url_key); // создаем переменную data которая является аналогом поисковой функции из model.php, но ищет только /index.php
-  if (!empty($data) && file_exists(PATH_TPL . $data['tpl'])) { //если найденный файл не пустой и этот файл находится по адресу корень сайта/templates/значени ключа 'tpl' из database, то
-    include_once(PATH_TPL . $data['tpl']); // скопировать один раз этот путь 'корень сайта/templates/'tpl'(main.php)
+  $data = searchData($database, $url_key); // создаем переменную data которая является аналогом поисковой функции из model.php
+  if (!empty($data) && file_exists(PATH_TPL . $data['tpl'])) { //если найденное значение не пустое и этот файл находится по адресу корень сайта/templates/значени ключа 'tpl' из database, то
+    include_once(PATH_TPL . $data['tpl']); // подключить этот путь 'корень сайта/templates/'tpl'(main.php)
   }
   else {
     die('в базе данных нет данных для вызываемой страницы'); // если нет, вывести сообщение

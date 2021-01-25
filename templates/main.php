@@ -167,120 +167,31 @@
         <div class="grid-container">
           <div class="tech-characteristics-heading heading">Технические характеристики бытовок</div>
           <div class="tech-characteristics-wrapper">
-            <div class="tech-characteristics-item">
-              <div class="tech-characteristics-item-title">Стандартная бытовка</div>
-              <div class="tech-characteristics-item-body">
-                <div class="tech-characteristics-img"><img src="../assets/img/standartnaya-bytovka-texnicheskie-xarakteristiki.jpg" title="" alt=""></div>
-                <div class="tech-characteristics-item-table">
-                  <div class="tech-characteristics-item-tr">Характеристики стандартной строительной бытовки</div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Тип</div>
-                    <div class="tech-characteristics-item-td">Вход с торца</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Габариты</div>
-                    <div class="tech-characteristics-item-td">2,5 х 6 х 2,5 м</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Каркас</div>
-                    <div class="tech-characteristics-item-td">Металлический</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Окно</div>
-                    <div class="tech-characteristics-item-td">Рама деревянная (двойное остекление)</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Внешняя отделка</div>
-                    <div class="tech-characteristics-item-td">Оцинкованный профлист</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Внутренняя отделка</div>
-                    <div class="tech-characteristics-item-td">Деревянная, ПХВ вагонка, оргалит</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Напольное покрытие</div>
-                    <div class="tech-characteristics-item-td">Линолеум</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Дверь наружная</div>
-                    <div class="tech-characteristics-item-td">Деревянная (с замком, обитая жестью)</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Дверь межкомнатная</div>
-                    <div class="tech-characteristics-item-td">ДВП</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Утепление</div>
-                    <div class="tech-characteristics-item-td">Минеральная вата 50 мм.</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Электропроводка</div>
-                    <div class="tech-characteristics-item-td">Стандарт 5 КВт (2 лампы, 1 светильник, 3 розетки двойные, 2 выключателя)</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Решетка на окне</div>
-                    <div class="tech-characteristics-item-td">Есть</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tech-characteristics-item">
-              <div class="tech-characteristics-item-title">Стандартная бытовка</div>
-              <div class="tech-characteristics-item-body">
-                <div class="tech-characteristics-img"><img src="../assets/img/standartnaya-bytovka-texnicheskie-xarakteristiki2.jpg" title="" alt=""></div>
-                <div class="tech-characteristics-item-table">
-                  <div class="tech-characteristics-item-tr">Характеристики стандартной строительной бытовки</div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Тип</div>
-                    <div class="tech-characteristics-item-td">Вход с торца</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Габариты</div>
-                    <div class="tech-characteristics-item-td">2,5 х 6 х 2,5 м</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Каркас</div>
-                    <div class="tech-characteristics-item-td">Металлический</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Окно</div>
-                    <div class="tech-characteristics-item-td">Рама деревянная (двойное остекление)</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Внешняя отделка</div>
-                    <div class="tech-characteristics-item-td">Оцинкованный профлист</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Внутренняя отделка</div>
-                    <div class="tech-characteristics-item-td">Деревянная, ПХВ вагонка, оргалит</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Напольное покрытие</div>
-                    <div class="tech-characteristics-item-td">Линолеум</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Дверь наружная</div>
-                    <div class="tech-characteristics-item-td">Деревянная (с замком, обитая жестью)</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Дверь межкомнатная</div>
-                    <div class="tech-characteristics-item-td">ДВП</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Утепление</div>
-                    <div class="tech-characteristics-item-td">Минеральная вата 50 мм.</div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Электропроводка</div>
-                    <div class="tech-characteristics-item-td">Стандарт 5 КВт (2 лампы, 1 светильник, 3 розетки двойные, 2 выключателя) </div>
-                  </div>
-                  <div class="tech-characteristics-item-tr">
-                    <div class="tech-characteristics-item-td">Решетка на окне</div>
-                    <div class="tech-characteristics-item-td">Есть</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <?php 
+              $tech = $database['tech'];
+                                      
+              foreach ($tech as $key => $value) {
+                $techName = $value['name'];
+                $techNameA = $value['name-a'];
+                $techType = $value['type'];
+                $techSize = $value['size'];
+                $techMaterial = $value['material'];
+                $techWindow = $value['window'];
+                $techInner = $value['inner'];
+                $techOuter = $value['outer'];
+                $techFloor = $value['floor'];
+                $techDoor = $value['door'];
+                $techInnerDoor = $value['inner-door'];
+                $techHot = $value['hot'];
+                $techElectro = $value['electro'];
+                $techWindowDef = $value['window-def'];
+                $techImage = $value['image'];
+                
+                include('./templates/blocks/tech.php');
+              }
+            ?>
+            
           </div>
           <div class="grid-x">
             <div class="tech-characteristics-link"><span class="btn_blue">Показать еще</span></div>
@@ -367,26 +278,12 @@
       </div>
       <div class="grid-container content">
         <div class="seo_text">
-          <h1>Сео-текст</h1>
-          <p>Компания «Бытовки-Сервис» (Москва) предлагает взять в аренду блок контейнеры и вагончики недорого. Мы гарантируем клиентам выгодные условия сотрудничества и самостоятельно доставляем бытовки до строительных объектов.</p>
-          <p>Аренда блок контейнера – это возможность получить качественное временное жилье, не тратясь на его приобретение. Арендовать такое сооружение можно гораздо дешевле, чем купить. К тому же наниматель не тратится на монтаж и демонтаж бытовки: все работы выполняют специалисты нашей компании.</p>
-          <p>Преимущества сотрудничества с ООО «Бытовки-Сервис»</p>
-          <ul>Аренда бытовок – оптимальный вариант для многих организаций. Каждому клиенту гарантированы следующие преимущества:
-            <li>возможность арендовать вагончик любого типа, как утепленный, так и металлический, с разными вариантами отделки и оборудования;</li>
-            <li>индивидуальный подход к заказу: учитываются все пожелания клиентов, подбирается наиболее оптимальный вариант сотрудничества для каждого;</li>
-            <li>выгодные цены на услуги;</li>
-            <li>оперативная доставка сооружений на объект;</li>
-            <li>Бытовка арендуется без залога, по договору.</li>
-          </ul>
-          <ul>Мы предлагаем различные виды бытовок:
-            <li>для складов: с решетками на окнах, внутренней отделкой, металлической дверью;</li>
-            <li>для офисных помещений: с окнами, дверями, подведенными инженерными коммуникациями, отделкой;</li>
-            <li>для торговых точек: с выходами, к которым подключается торговое оборудование, с коммуникациями;</li>
-            <li>для проживания: с системой сигнализации, мебелью, отделкой и различными удобствами;</li>
-            <li>для охранных постов со всем необходимым оснащением и мебелью.</li>
-          </ul>
-          <p>Аренда бытовки может осуществляться на любой срок по желанию клиента. Все обязательства прописываются в договоре, действие которого можно продлить. Для постоянных клиентов действуют специальные предложения.</p>
-          <p>Звоните по телефонам: <span class="tel">+7 (495) 789-55-63</span>,<span class="tel">+7 (495) 641-85-68 </span>, и наши консультанты подберут для вас наиболее выгодные условия сотрудничества.</p>
+          <?php
+          include_once('./templates/blocks/h1.php');
+          ?>
+          <?php
+            if (!empty($data['text'])){echo $data['text'];}
+           ?>
         </div>
       </div>
 

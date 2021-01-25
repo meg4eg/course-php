@@ -17,7 +17,9 @@
         include_once('./templates/blocks/breadcrumbs.php');
         ?>
         <div class="grid-container">
-          <h1>Фотогалерея</h1>
+          <?php
+          include_once('./templates/blocks/h1.php');
+          ?>
         </div>
         <div class="photogallery">
           <div class="grid-container">
