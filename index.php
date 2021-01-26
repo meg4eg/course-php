@@ -3,7 +3,7 @@
 $show_complete_tasks = rand(0, 1);
 // массив данных
 $project = [
-    'Работа', 'Учёба', 'Входящие', 'Домашние дела', 'Авто'
+    'Работа', 'Учеба', 'Входящие', 'Домашние дела', 'Авто'
 ];
 $task = [
     [
@@ -42,7 +42,20 @@ $task = [
         'category' => 'Домашние дела',
         'complete' => false
     ]
-]
+
+];
+
+function taskCount($arr, $projectName) {
+    $count = 0;
+    foreach ($arr as $key => $value) {
+       foreach ($value as $k => $v) {
+          if ($v === $projectName) {
+            $count++;
+        } 
+       }
+    }
+    echo $count; 
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -87,7 +100,7 @@ $task = [
                     <?php foreach ($project as $key => $value) : $category = $value ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?php echo $category ?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"><?php  taskCount($task, $category) ?></span>
                         </li>
                     <?php endforeach ?>
                     </ul>
