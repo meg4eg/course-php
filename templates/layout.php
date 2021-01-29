@@ -1,68 +1,9 @@
-<?php
-// показывать или нет выполненные задачи
-$show_complete_tasks = rand(0, 1);
-// массив данных
-$project = [
-    'Работа', 'Учеба', 'Входящие', 'Домашние дела', 'Авто'
-];
-$task = [
-    [
-        'name' => 'Собеседование в IT компании',
-        'date' => '01.12.2019',
-        'category' => 'Работа',
-        'complete' => false
-    ],
-    [
-        'name' => 'Выполнить тестовое задание',
-        'date' => '25.12.2019',
-        'category' => 'Работа',
-        'complete' => false
-    ],
-    [
-        'name' => 'Сделать задание первого раздела',
-        'date' => '21.12.2019',
-        'category' => 'Учеба',
-        'complete' => true
-    ],
-    [
-        'name' => 'Встреча с другом',
-        'date' => '22.12.2019',
-        'category' => 'Входящие',
-        'complete' => false
-    ],
-    [
-        'name' => 'Купить корм для кота',
-        'date' => '',
-        'category' => 'Домашние дела',
-        'complete' => false
-    ],
-    [
-        'name' => 'Заказать пиццу',
-        'date' => '',
-        'category' => 'Домашние дела',
-        'complete' => false
-    ]
-
-];
-
-function taskCount($arr, $projectName) {
-    $count = 0;
-    foreach ($arr as $key => $value) {
-       foreach ($value as $k => $v) {
-          if ($v === $projectName) {
-            $count++;
-        } 
-       }
-    }
-    echo $count; 
-}
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title><?php $mainTitle ?></title>
+    <title><?php echo $mainTitle ?></title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flatpickr.min.css">
@@ -92,7 +33,7 @@ function taskCount($arr, $projectName) {
         </header>
 
         <?php
-        include_once('./templates/main.php');
+        print(include_template('main.php', $test));
         ?>
     </div>
 </div>
