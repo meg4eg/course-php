@@ -43,7 +43,7 @@
 
                 <table class="tasks">
                     <?php $taskName = $tasks; foreach ($taskName as $key => $value) : $nameTask = $value['name']; $dateTask = $value['date']; $completeTask = $value['complete']; { if ($completeTask && $show_complete_tasks == 1) {continue;}}?>
-                    <tr class="tasks__item task <?php echo ($completeTask && $show_complete_tasks == 0 ? 'task--completed' : ''); echo (strtotime($dateTask)-time() <= 86400 ? 'task--important' : ''); ?>">
+                    <tr class="tasks__item task <?php echo ($completeTask && $show_complete_tasks == 0 ? 'task--completed ' : ''); echo (strtotime($dateTask)-time() <= 86400 && !empty($dateTask) ? 'task--important' : ''); ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden" type="checkbox" <?php echo ($completeTask == true ? 'checked' : '')?>>
