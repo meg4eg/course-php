@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -33,7 +34,7 @@
         </header>
 
         <?php
-        print(include_template('main.php', $test));
+        echo $main ; 
         ?>
     </div>
 </div>
