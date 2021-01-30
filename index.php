@@ -81,15 +81,29 @@ $show_complete_tasks = rand(0, 1);
                     <tr class="tasks__item task <?php echo ($show_complete_tasks == 1 ? 'task--completed' : '')?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden" type="checkbox" <?php echo ($show_complete_tasks == 1 ? 'checked' : '')?>>
-                                <span class="checkbox__text">Записаться на интенсив "Базовый PHP"</span>
+                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?php echo ($show_complete_tasks == 1 ? 'checked' : '')?>>
+                                <span class="checkbox__text">Сделать главную страницу Дела в порядке</span>
                             </label>
                         </td>
 
-                        <td class="task__date">10.10.2019</td>
-                        <td class="task__controls"></td>
+                        <td class="task__file">
+                            <a class="download-link" href="#">Home.psd</a>
+                        </td>
+
+                        <td class="task__date"></td>
                     </tr>
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
+                    <?php echo ($show_complete_tasks == 1 ? '<tr class="tasks__item task task--completed">
+    <td class="task__select">
+        <label class="checkbox task__checkbox">
+            <input class="checkbox__input visually-hidden" type="checkbox" checked>
+            <span class="checkbox__text">Записаться на интенсив "Базовый PHP"</span>
+        </label>
+    </td>
+    <td class="task__date">10.10.2019</td>
+    <td class="task__controls"></td>
+</tr>
+' : '') ?>
                 </table>
             </main>
         </div>
