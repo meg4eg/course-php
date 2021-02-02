@@ -62,6 +62,6 @@ function taskCount($arr, $projectName) {
 include_once('./helpers.php');
 
 include_template('main.php', $task);
-print(include_template('layout.php', $arr=['main'=>include_template('main.php', $task), 'mainTitle' => 'Дела в порядке'] ));
+print(include_template('layout.php', $arr=['main'=>include_template('main.php', $task), 'mainTitle' => 'Дела в порядке', 'userName' => 'Имя'] ));
 
 ?>
