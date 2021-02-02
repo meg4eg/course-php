@@ -34,7 +34,7 @@
         </header>
 
         <?php
-        print(include_template('main.php', $test));
+        echo $main ; 
         ?>
     </div>
 </div>
