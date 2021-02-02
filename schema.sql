@@ -1,5 +1,5 @@
 CREATE DATABASE my_deal;
-USE deal;
+USE my_deal;
 CREATE TABLE project (
 project_id INT AUTO_INCREMENT PRIMARY KEY,
 project_name VARCHAR(50) NOT NULL,
