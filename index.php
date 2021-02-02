@@ -78,10 +78,10 @@ $show_complete_tasks = rand(0, 1);
                 </div>
 
                 <table class="tasks">
-                    <tr class="tasks__item task <?php echo ($show_complete_tasks == 1 ? 'task--completed' : '')?>">
+                    <tr class="tasks__item task ">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1" <?php echo ($show_complete_tasks == 1 ? 'checked' : '')?>>
+                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
                                 <span class="checkbox__text">Сделать главную страницу Дела в порядке</span>
                             </label>
                         </td>
