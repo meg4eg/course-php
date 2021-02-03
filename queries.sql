@@ -17,8 +17,9 @@ VALUES(CURRENT_TIMESTAMP(), 'Купить корм для кота', 2, 4);
 INSERT INTO tasks (data, task_name, user_id, project_id)
 VALUES(CURRENT_TIMESTAMP(), 'Заказать пиццу', 1, 4);
 CREATE INDEX t_name ON tasks (task_name);
-SELECT project_name FROM projects
-WHERE user_id = 1;
+SELECT p.project_name, name FROM projects p 
+JOIN users u ON p.user_id = u.id
+WHERE user_id=1;
 SELECT * FROM tasks
 WHERE project_id = 1;
 UPDATE tasks SET done = 1
