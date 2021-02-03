@@ -5,7 +5,7 @@ USE my_deal;
 CREATE TABLE projects (
 project_id INT AUTO_INCREMENT PRIMARY KEY,
 project_name VARCHAR(50) NOT NULL,
-user_id INT
+user_id INT NOT NULL
 );
 CREATE TABLE users (
 id INT AUTO_INCREMENT PRIMARY KEY,
