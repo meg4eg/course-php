@@ -1,5 +1,5 @@
-INSERT INTO projects (project_name)
-VALUES ('Работа'), ('Учеба'), ('Входящие'), ('Домашние дела'), ('Авто');
+INSERT INTO projects (user_id, project_name)
+VALUES (1, 'Работа'), (1, 'Учеба'), (1, 'Входящие'), (2, 'Домашние дела'), (2, 'Авто');
 INSERT INTO users (reg_date, email, name, password)
 VALUES(CURRENT_TIMESTAMP(), 'example@mail.ru', 'Экзампл', 'Экзампл123');
 INSERT INTO users (reg_date, email, name, password)
@@ -17,7 +17,8 @@ VALUES(CURRENT_TIMESTAMP(), 'Купить корм для кота', 2, 4);
 INSERT INTO tasks (data, task_name, user_id, project_id)
 VALUES(CURRENT_TIMESTAMP(), 'Заказать пиццу', 1, 4);
 CREATE INDEX t_name ON tasks (task_name);
-SELECT project_name FROM projects;
+SELECT project_name FROM projects
+WHERE user_id = 1;
 SELECT * FROM tasks
 WHERE project_id = 1;
 UPDATE tasks SET done = 1
