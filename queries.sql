@@ -1,9 +1,9 @@
 INSERT INTO projects (user_id, project_name)
 VALUES (1, 'Работа'), (1, 'Учеба'), (1, 'Входящие'), (2, 'Домашние дела'), (2, 'Авто');
 INSERT INTO users (reg_date, email, name, password)
-VALUES(CURRENT_TIMESTAMP(), 'example@mail.ru', 'Экзампл', 'Экзампл123');
+VALUES(CURRENT_TIMESTAMP(), 'example@mail.ru', 'Экзампл', MD5('Экзампл123'));
 INSERT INTO users (reg_date, email, name, password)
-VALUES(CURRENT_TIMESTAMP(), 'test@mail.ru', 'Тест', 'Тест123');
+VALUES(CURRENT_TIMESTAMP(), 'test@mail.ru', 'Тест', MD5('Тест123'));
 INSERT INTO tasks (data, task_name, done_time, user_id, project_id)
 VALUES(CURRENT_TIMESTAMP(), 'Собеседование в IT компании', '2021-02-03', 1, 1);
 INSERT INTO tasks (data, task_name, done_time, user_id, project_id)
@@ -17,12 +17,24 @@ VALUES(CURRENT_TIMESTAMP(), 'Купить корм для кота', 2, 4);
 INSERT INTO tasks (data, task_name, user_id, project_id)
 VALUES(CURRENT_TIMESTAMP(), 'Заказать пиццу', 1, 4);
 CREATE INDEX t_name ON tasks (task_name);
-SELECT p.project_name, name FROM projects p 
+CREATE INDEX e_mail ON users (email); 
+CREATE INDEX u_name ON users (name); 
+CREATE INDEX p_name ON projects (project_name); 
+SELECT p.project_name, name 
+FROM projects p 
 JOIN users u ON p.user_id = u.id
 WHERE user_id=1;
 SELECT * FROM tasks
 WHERE project_id = 1;
-UPDATE tasks SET done = 1
+UPDATE tasks 
+SET done = 1
 WHERE task_name = 'Заказать пиццу';
-UPDATE tasks SET task_name = 'Обновленное название'
+UPDATE tasks 
+SET task_name = 'Обновленное название'
 WHERE task_id = 5;
+ALTER TABLE projects
+ADD FOREIGN KEY (user_id) REFERENCES users (id);
+ALTER TABLE tasks
+ADD FOREIGN KEY (user_id) REFERENCES users (id);
+ALTER TABLE tasks
+ADD FOREIGN KEY (project_id) REFERENCES projects (project_id);
