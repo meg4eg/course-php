@@ -71,7 +71,6 @@ else {
     $result = mysqli_query($con, $sql);
     if ($result) {
         $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        var_dump($tasks);
         }
     else {
         print("Ошибка " . mysqli_error($con));
