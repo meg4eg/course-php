@@ -43,33 +43,58 @@
 //             'complete' => false
 //         ]
 //     ],
-    
+//     'mainTitle' => 'Делаaa в порядке'
 // ];
-
-$link = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
-if ($link == false){
-    print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
-}
-else {
-    print("Соединение установлено успешно");
-}
-
+include_once('./helpers.php');
 function taskCount($arr, $projectName) {
     $count = 0;
     foreach ($arr as $key => $value) {
-       foreach ($value as $k => $v) {
-          if ($v === $projectName) {
+        foreach ($value as $v) {
+        if ($v == $projectName) {
             $count++;
-        } 
-       }
+         } 
+        }
     }
     echo $count; 
 }
 
+$current_user = 3;
+$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
+mysqli_set_charset($con, "utf8");
 
-include_once('./helpers.php');
+if ($con == false){
+    print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
+}
+else {
+    // print("Соединение установлено успешно"); 
+    $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE user_id = $current_user";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+        $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        var_dump($tasks);
+        }
+    else {
+        print("Ошибка " . mysqli_error($con));
+    }
+    $sql = "SELECT project_name, project_id FROM projects WHERE user_id = $current_user";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+        $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+    else {
+        print("Ошибка " . mysqli_error($con));
+    }
+    $sql = "SELECT name FROM users WHERE id = $current_user";
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+        $user_name = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+    else {
+        print("Ошибка " . mysqli_error($con));
+    }
+}
 
-include_template('main.php', $task);
-print(include_template('layout.php', $arr=['main'=>include_template('main.php', $task), 'mainTitle' => 'Дела в порядке', 'userName' => 'Имя'] ));
+include_template('main.php', ['tasks' => $tasks, 'projects' => $projects]);
+print(include_template('layout.php', ['main'=>include_template('main.php', ['tasks' => $tasks, 'projects' => $projects]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name] ));
 
 ?>
