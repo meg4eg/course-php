@@ -5,10 +5,10 @@
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                    <?php foreach ($projects as $key => $value) : $category = $value['project_name']; $pr_id = $value['project_id'] ?>
-                        <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php echo $category ?></a>
-                            <span class="main-navigation__list-item-count"><?php  taskCount($tasks, $pr_id) ?></span>
+                    <?php foreach ($projects as $key => $value) : $category = $value['project_name']; $pr_id = $value['project_id']; $url = $value['url'] ?>
+                        <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
+                            <a class="main-navigation__list-item-link" href="<?php echo($url.$pr_id) ?>"><?php echo $category ?></a>
+                            <span class="main-navigation__list-item-count"><?php taskCount($tasks, $pr_id) ?></span>
                         </li>
                     <?php endforeach ?>
                     </ul>
@@ -42,7 +42,7 @@
                 </div>
 
                 <table class="tasks">
-                    <?php foreach ($tasks as $key => $value) : $nameTask = $value['task_name']; $dateTask = $value['done_time']; $completeTask = $value['done']; { if ($completeTask && $show_complete_tasks == 1) {continue;}}?>
+                    <?php foreach ($tasks as $key => $val) : $nameTask = $val['task_name']; $dateTask = $val['done_time']; $completeTask = $val['done']; { if ($completeTask && $show_complete_tasks == 1) {continue;}}?>
                     <tr class="tasks__item task <?php echo ($completeTask && $show_complete_tasks == 0 ? 'task--completed ' : ''); echo (strtotime($dateTask)-time() <= 0 && !empty($dateTask) ? 'task--important' : ''); ?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
