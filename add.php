@@ -1,5 +1,5 @@
 <?php
-
+include_once('./helpers.php');
 $current_user = 3;
 $con = mysqli_connect("localhost", "root", "root", "my_deal");
 mysqli_set_charset($con, "utf8");
@@ -58,10 +58,10 @@ else {
       },
       'name' => function() {
         return validateFilled('name');
-      },
-      'date' => function() {
-        return vaidateDate('date');// не знаю как сделать номр функцию
       }
+      // 'date' => function() {
+      //   return vaidateDate('date');// не знаю как сделать номр функцию
+      // }
     ];
     
     foreach ($_POST as $key => $value) {
@@ -78,11 +78,13 @@ else {
         $errors[$field] = 'Поле не заполнено';
       }
     }
-    
-    $filename = uniqid() . $_FILES['file']['type'];
-    $form['file'] = $filename;
-    move_uploaded_file($_FILES['file']['tmp_name'], '/' . $filename);
-    $tasks['file'] = $filename;
+
+    if (isset($_FILES['file']['name'])) {
+      $filename = uniqid() . $_FILES['file']['type'];
+      $form['file'] = $filename;
+      move_uploaded_file($_FILES['file']['tmp_name'], '/' . $filename);
+      $tasks['file'] = $filename;
+    }
 
     if (count($errors)) {
       print(include_template('layout.php', ['dynamic'=>include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects, 'errors' => $errors]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name] ));
@@ -102,7 +104,7 @@ else {
   }
 }
 
-include_once('./helpers.php');
+
 print(include_template('layout.php', ['dynamic'=>include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name] ));
 
 ?>
