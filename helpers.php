@@ -131,7 +131,7 @@ function include_template($name, array $data = []) { // определяем ф�
     $result = ''; // переменная в которую будем возвращать результат работы
 
     if (!is_readable($name)) { // если не правильное имя 
-        return $result; //вернуть пусть результат
+        return $result; //вернуть пустой результат
     }
 
     ob_start(); // включение буферизации вывода
@@ -140,5 +140,46 @@ function include_template($name, array $data = []) { // определяем ф�
 
     $result = ob_get_clean(); // очищаем буфер
 
-    return $result; // возвращаем результат
+    return $result; // возвращаем результат mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
+}
+
+
+function taskCount($arr, $projectName) {
+    $count = 0;
+    foreach ($arr as $key => $value) {
+        // var_dump($arr);
+        foreach ($value as $v) {
+        if ($v == $projectName) {
+            $count++;
+         } 
+        }
+    }
+    echo $count; 
+}
+
+function validateFilled($name) {
+    if (empty($_POST[$name])) {
+        return "Это поле должно быть заполнено";
+    }
+    return null;
+}
+
+function getPostVal($name) {
+    return $_POST[$name] ?? '';
+}
+
+function validateCategory($name, $allowed_list) {
+    $id = $_POST[$name];
+
+    if (!in_array($id, $allowed_list)) {
+        return 'Указана не существующая категория';
+    }
+    return null;
+}
+
+function validateDate($name) {
+    if ($_POST[$name] < date('Y-m-d')) {
+        return 'Указана прошедшая дата';
+    }
+    return null;
 }
