@@ -52,6 +52,20 @@ else {
     else {
         print("Ошибка " . mysqli_error($con));
     }
+
+    if (isset($_GET['project_id'])) {
+        $sql = "SELECT project_id FROM projects WHERE user_id = $current_user and project_id = $_GET[project_id]";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            $error = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            if (empty($error)) {
+                http_response_code(404);
+            }
+        }
+        else {
+            print("Ошибка " . mysqli_error($con));
+        }
+    }       
 }
 
 include_template('main.php', ['tasks' => $tasks, 'projects' => $projects]);
