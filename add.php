@@ -87,7 +87,7 @@ else {
     }
 
     if (count($errors)) {
-      print(include_template('layout.php', ['dynamic'=>include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects, 'errors' => $errors]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name] ));
+      $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects, 'errors' => $errors]) ;
     }
     else {
       $sql = "INSERT INTO tasks (task_name, file, done_time, user_id, project_id) VALUES (?, ?, ?, 3, ?)";
@@ -99,12 +99,13 @@ else {
         header('Location: index.php');
       }
     }
-
-    
+  }
+  else {
+    $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]);
   }
 }
 
 
-print(include_template('layout.php', ['dynamic'=>include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name] ));
+print(include_template('layout.php', ['dynamic'=> $content , 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name]));
 
 ?>
