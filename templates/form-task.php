@@ -34,12 +34,9 @@
             <?php $classname = isset($errors['project']) ? 'form__input--error' : ''; ?>
             <select class="form__input form__input--select <?= $classname; ?>" name="project" id="project">
               <?php foreach ($projects as $value) : $project_name = $value['project_name'] ?>
-              <option value="<?= getPostVal('project'); ?>"><?php echo $project_name ?></option>
+              <option value="<?= $value['project_id'] ?>"><?php echo $project_name ?></option>
               <?php endforeach ?>
             </select>
-            <?php if (isset($errors)): ?>
-              <p class="form__message"><?= $errors['project']; ?></p>
-            <?php endif; ?>
           </div>
 
           <div class="form__row">

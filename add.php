@@ -58,10 +58,10 @@ else {
       },
       'name' => function() {
         return validateFilled('name');
+      },
+      'date' => function() {
+        return validateDate('date');
       }
-      // 'date' => function() {
-      //   return vaidateDate('date');// не знаю как сделать номр функцию
-      // }
     ];
     
     foreach ($_POST as $key => $value) {
@@ -91,14 +91,16 @@ else {
       $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects, 'errors' => $errors]) ;
     }
     else {
-      $sql = "INSERT INTO tasks (task_name, file, done_time, user_id, project_id) VALUES (?, ?, ?, 3, ?)";
-      $stmt = db_get_prepare_stmt($con, $sql, $form);
-      $res = mysqli_stmt_execute($stmt);
-      $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]);
-      if ($res) {
+      $sql = "INSERT INTO tasks (task_name, project_id, done_time, file, user_id) VALUES (?, ?, ?, ?, 3)";
       
+      $stmt = db_get_prepare_stmt($con, $sql, $_POST);
+     
+      $res = mysqli_stmt_execute($stmt);
+      if ($res) {
+        
         header('Location: index.php');
       }
+      $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]);
     }
   }
   else {

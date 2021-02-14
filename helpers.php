@@ -147,7 +147,6 @@ function include_template($name, array $data = []) { // определяем ф�
 function taskCount($arr, $projectName) {
     $count = 0;
     foreach ($arr as $key => $value) {
-        // var_dump($arr);
         foreach ($value as $v) {
         if ($v == $projectName) {
             $count++;
@@ -178,7 +177,7 @@ function validateCategory($name, $allowed_list) {
 }
 
 function validateDate($name) {
-    if ($_POST[$name] < date('Y-m-d')) {
+    if ($_POST[$name] != date('Y-m-d') && $_POST[$name] < date('Y-m-d')) {
         return 'Указана прошедшая дата';
     }
     return null;
