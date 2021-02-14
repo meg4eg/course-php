@@ -12,15 +12,11 @@ else {
     $scriptname = pathinfo(__FILE__, PATHINFO_BASENAME);
     $query = http_build_query($params);
     $url = "/" . $scriptname . "?" . $query;
-    
-    if (isset($_GET['project_id'])) {
-        $show_task = 'project_id='.$_GET['project_id'];
-    }
-    else {
-        $show_task = 'user_id ='.$current_user;   
-    }
+
+    $show_task = 'user_id ='.$current_user;  
 
     if (isset($_GET['project_id'])) {
+        $show_task = 'project_id='.$_GET['project_id'];
         $sql = "SELECT project_id FROM projects WHERE user_id = $current_user AND project_id = $_GET[project_id]";
         $result = mysqli_query($con, $sql);
         if ($result) {
@@ -31,6 +27,7 @@ else {
         }
         else if ($_GET['project_id'] == '') {
             http_response_code(404);
+            $show_task = 'project_id='. 0;
         }
     }      
 // Имя активного юзера
@@ -40,7 +37,7 @@ else {
         $user_name = mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
     else {
-        print("Ошибка " . mysqli_error($con));
+        print("Ошибка1 " . mysqli_error($con));
     }
 // задачи
     $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE $show_task";
@@ -49,7 +46,7 @@ else {
         $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
     else {
-        print("Ошибка " . mysqli_error($con));
+        print("Ошибка2 " . mysqli_error($con));
     }
 // список проектов для юзера 
     $sql = "SELECT project_name, project_id FROM projects WHERE user_id = $current_user";
@@ -61,7 +58,7 @@ else {
             }  
         }
     else {
-        print("Ошибка " . mysqli_error($con));
+        print("Ошибка3 " . mysqli_error($con));
     }
     
 
