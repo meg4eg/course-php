@@ -7,7 +7,7 @@
                     <ul class="main-navigation__list">
                     <?php foreach ($projects as $key => $value) : $category = $value['project_name']; $pr_id = $value['project_id']; $url = $value['url'] ?>
                         <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
-                            <a class="main-navigation__list-item-link" href="<?php echo($url.$pr_id) ?>"><?php echo $category ?></a>
+                            <a class="main-navigation__list-item-link" href="<?php echo($url.$pr_id) ?>"><?php echo(htmlspecialchars($category))?></a>
                             <span class="main-navigation__list-item-count"><?php taskCount($tasks, $pr_id) ?></span>
                         </li>
                     <?php endforeach ?>
@@ -47,11 +47,11 @@
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden" type="checkbox" <?php echo ($completeTask == true ? 'checked' : '')?>>
-                                <span class="checkbox__text"><?php echo $nameTask ?></span>
+                                <span class="checkbox__text"><?php echo(htmlspecialchars( $nameTask)) ?></span>
                             </label>
                         </td>
 
-                        <td class="task__date"><?php echo $dateTask ?></td>
+                        <td class="task__date"><?php echo(htmlspecialchars($dateTask))  ?></td>
                         <td class="task__controls"></td>
                     </tr>
                     <?php endforeach ?>

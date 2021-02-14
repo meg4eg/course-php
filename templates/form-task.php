@@ -6,7 +6,7 @@
                     <ul class="main-navigation__list">
                     <?php foreach ($projects as $key => $value) : $category = $value['project_name']; $pr_id = $value['project_id']; $url = $value['url'] ?>
                         <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
-                            <a class="main-navigation__list-item-link" href="<?php echo($url.$pr_id) ?>"><?php echo $category ?></a>
+                            <a class="main-navigation__list-item-link" href="<?php echo($url.$pr_id) ?>"><?php echo(htmlspecialchars($category))  ?></a>
                             <span class="main-navigation__list-item-count"><?php taskCount($tasks, $pr_id) ?></span>
                         </li>
                     <?php endforeach ?>
@@ -34,7 +34,7 @@
             <?php $classname = isset($errors['project']) ? 'form__input--error' : ''; ?>
             <select class="form__input form__input--select <?= $classname; ?>" name="project" id="project">
               <?php foreach ($projects as $value) : $project_name = $value['project_name'] ?>
-              <option value="<?= $value['project_id'] ?>"><?php echo $project_name ?></option>
+              <option value="<?= $value['project_id'] ?>"><?php echo(htmlspecialchars($project_name)); ?></option>
               <?php endforeach ?>
             </select>
           </div>
