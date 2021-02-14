@@ -1,7 +1,7 @@
 <?php
 include_once('./helpers.php');
 $current_user = 3;
-$con = mysqli_connect("localhost", "root", "root", "my_deal");
+$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
 mysqli_set_charset($con, "utf8");
 
 if ($con == false){
@@ -77,6 +77,7 @@ else {
       if (empty($_POST[$field])) {
         $errors[$field] = 'Поле не заполнено';
       }
+      
     }
 
     if (isset($_FILES['file']['name'])) {
@@ -93,7 +94,7 @@ else {
       $sql = "INSERT INTO tasks (task_name, file, done_time, user_id, project_id) VALUES (?, ?, ?, 3, ?)";
       $stmt = db_get_prepare_stmt($con, $sql, $form);
       $res = mysqli_stmt_execute($stmt);
-
+      $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects]);
       if ($res) {
       
         header('Location: index.php');
