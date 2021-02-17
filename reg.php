@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['user'])) {
+  header('Location: /index.php');
+  exit();
+}
 include_once('./helpers.php');
 
 $con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
