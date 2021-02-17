@@ -1,6 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: /index.php');
+    exit();
+}
 include_once('./helpers.php');
-$current_user = 3;
+$current_user = $_SESSION['user']['id'];
 $con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
 mysqli_set_charset($con, "utf8");
 

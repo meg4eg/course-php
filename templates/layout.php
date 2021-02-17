@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flatpickr.min.css">
 </head>
-
-<body>
+<?php $classname = !isset($_SESSION['user']) ? "class='body-background'" : ''; ?>
+<body <?= $classname; ?>>
 <h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">
-    <div class="container container--with-sidebar">
+    <?php $classname = isset($_SESSION['user']) ? 'container--with-sidebar' : ''; ?>
+    <div class="container <?= $classname; ?>">
         <header class="main-header">
             <a href="/">
                 <img src="img/logo.png" width="153" height="42" alt="Логотип Дела в порядке">
@@ -22,15 +23,15 @@
 
             <div class="main-header__side">
                 <?php if (!isset($_SESSION['user'])): ?>
-                    <a class="main-header__side-item button button--transparent" href="/reg.php">Войти</a>
+                    <a class="main-header__side-item button button--transparent" href="/auth.php">Войти</a>
                 <?php else: ?>    
                     <a class="main-header__side-item button button--plus open-modal" href="/add.php">Добавить задачу</a>
 
                     <div class="main-header__side-item user-menu">
                         <div class="user-menu__data">
-                            <p><?php echo(htmlspecialchars( $user_name[0]['name'])); ?></p>
+                            <p><?php echo( $user_name[0]['name']); ?></p>
 
-                            <a href="#">Выйти</a>
+                            <a href="/logout.php">Выйти</a>
                         </div>
                     </div>
                 <?php endif; ?>
