@@ -43,7 +43,6 @@ else {
     }
     if (!empty($errors)) {
       $content = include_template('authoriz.php', ['form' => $form, 'errors' => $errors]);
-      var_dump($errors);
     }
     else {
       header('Location: /index.php');
