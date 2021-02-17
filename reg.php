@@ -52,7 +52,7 @@ if ($con == false) {
         $res = mysqli_stmt_execute($stmt);
       }
       if ($res && empty($errors)) {
-        header("location: /auth.php");
+        header("location: /index.php");
         exit();
       }
       $tpl_data['errors'] = $errors;
