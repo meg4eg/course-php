@@ -29,7 +29,7 @@
 
                     <div class="main-header__side-item user-menu">
                         <div class="user-menu__data">
-                            <p><?php echo( $user_name[0]['name']); ?></p>
+                            <p><?php echo(htmlspecialchars( $user_name[0]['name'])); ?></p>
 
                             <a href="/logout.php">Выйти</a>
                         </div>
