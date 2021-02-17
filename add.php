@@ -96,7 +96,7 @@ else {
       $content = include_template('form-task.php', ['tasks' => $tasks, 'projects' => $projects, 'errors' => $errors]) ;
     }
     else {
-      $sql = "INSERT INTO tasks (task_name, project_id, done_time, file, user_id) VALUES (?, ?, ?, ?, 3)";
+      $sql = "INSERT INTO tasks (task_name, project_id, done_time, file, user_id) VALUES (?, ?, ?, ?, '$current_user')";
       
       $stmt = db_get_prepare_stmt($con, $sql, $_POST);
      
