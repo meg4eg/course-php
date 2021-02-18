@@ -140,7 +140,7 @@ function include_template($name, array $data = []) { // определяем ф�
 
     $result = ob_get_clean(); // очищаем буфер
 
-    return $result; // возвращаем результат mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
+    return $result; // возвращаем результат 
 }
 
 
@@ -177,8 +177,9 @@ function validateCategory($name, $allowed_list) {
 }
 
 function validateDate($name) {
-    if ($_POST[$name] != date('Y-m-d') && $_POST[$name] < date('Y-m-d')) {
-        return 'Указана прошедшая дата';
+
+    if (strtotime($_POST[$name]) < strtotime(date('Y-m-d')) && !empty($_POST[$name])) {
+    return 'Указана неверная дата';
     }
     return null;
 }
