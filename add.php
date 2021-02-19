@@ -82,7 +82,7 @@ if ($con == false) {
       }
     }
 
-    if (isset($_FILES['file'])) {
+    if (!empty($_FILES['file']['name'])) {
       
       $file_name = $_FILES['file']['name'] ;
       $uniqid = uniqid();
@@ -92,7 +92,10 @@ if ($con == false) {
       $form['file'] = $file_url;
 
       move_uploaded_file($_FILES['file']['tmp_name'], __DIR__ . $file_url);
-      
+
+    } 
+    else {
+      $form['file'] = null;
     }
 
     if (!empty($errors)) {
