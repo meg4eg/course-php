@@ -3,7 +3,6 @@ session_start();
 
 
 $con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
-
 mysqli_set_charset($con, "utf8");
 
 if ($con == false) {
@@ -11,7 +10,7 @@ if ($con == false) {
 } else {
     if (isset($_SESSION['user'])) {
         $current_user = $_SESSION['user']['id'];
-
+        include_once('./helpers.php');
         $params = $_GET;
         $params['project_id'] = '';
         $scriptname = pathinfo(__FILE__, PATHINFO_BASENAME);
@@ -19,6 +18,7 @@ if ($con == false) {
         $url = "/" . $scriptname . "?" . $query;
 
         $show_task = 'user_id = ' . $current_user;
+
 
 
         if (isset($_GET['project_id'])) {
@@ -43,6 +43,7 @@ if ($con == false) {
         } else {
             print("Ошибка1 " . mysqli_error($con));
         }
+
         // задачи
         $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE $show_task";
         $result = mysqli_query($con, $sql);
@@ -50,6 +51,14 @@ if ($con == false) {
             $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
         } else {
             print("Ошибка2 " . mysqli_error($con));
+        }
+        $search = $_GET['search'] ?? '';
+        if ($search) {
+            $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE MATCH(task_name) AGAINST(?)";
+            $stmt = db_get_prepare_stmt($con, $sql, [$search]);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
         // список проектов для юзера 
         $sql = "SELECT project_name, project_id FROM projects WHERE user_id = $current_user";
@@ -64,7 +73,7 @@ if ($con == false) {
         }
     }
 }
-include_once('./helpers.php');
+
 
 if (isset($_SESSION['user'])) {
     print(include_template('layout.php', ['dynamic' => include_template('main.php', ['tasks' => $tasks, 'projects' => $projects]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name]));

@@ -23,4 +23,5 @@ file VARCHAR(255) DEFAULT NULL,
 done_time DATE,
 user_id INT,
 project_id INT
-)
+);
+CREATE FULLTEXT INDEX task_ft_search ON tasks(task_name);
