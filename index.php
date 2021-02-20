@@ -19,8 +19,17 @@ if ($con == false) {
 
         $show_task = 'user_id = ' . $current_user;
 
-
-
+        // фильтр по дням
+        if (isset($_GET['sort']) && $_GET['sort'] == 'day') {
+            $show_task = 'done_time = CURDATE()';
+        }
+        elseif (isset($_GET['sort']) && $_GET['sort'] == 'tomorrow') {
+            $show_task = 'done_time = ADDDATE(CURDATE(), INTERVAL 1 DAY)';
+        }
+        elseif (isset($_GET['sort']) && $_GET['sort'] == 'late') {
+            $show_task = 'done_time < CURDATE()';
+        }
+        //фильтр по проектам
         if (isset($_GET['project_id'])) {
             $show_task = 'project_id=' . $_GET['project_id'];
             $sql = "SELECT project_id FROM projects WHERE user_id = $current_user AND project_id = $_GET[project_id]";
@@ -43,9 +52,9 @@ if ($con == false) {
         } else {
             print("Ошибка1 " . mysqli_error($con));
         }
-
+        
         // задачи
-        $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE $show_task";
+        $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE user_id = $current_user AND $show_task";
         $result = mysqli_query($con, $sql);
         if ($result) {
             $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -58,7 +67,7 @@ if ($con == false) {
             $stmt = db_get_prepare_stmt($con, $sql, [$search]);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-            $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);            
         }
         // список проектов для юзера 
         $sql = "SELECT project_name, project_id FROM projects WHERE user_id = $current_user";

@@ -15,7 +15,7 @@
                 <?php endforeach ?>
             </ul>
         </nav>
-        <a class="button button--transparent button--plus content__side-button" href="pages/form-project.html" target="project_add">Добавить проект</a>
+        <a class="button button--transparent button--plus content__side-button" href="/project.php" target="project_add">Добавить проект</a>
     </section>
 
     <main class="content__main">
@@ -29,10 +29,10 @@
 
         <div class="tasks-controls">
             <nav class="tasks-switch">
-                <a href="/" class="tasks-switch__item tasks-switch__item--active">Все задачи</a>
-                <a href="/" class="tasks-switch__item">Повестка дня</a>
-                <a href="/" class="tasks-switch__item">Завтра</a>
-                <a href="/" class="tasks-switch__item">Просроченные</a>
+                <a href="/" class="tasks-switch__item <?php echo (isset($_GET['sort'])) ?'':'tasks-switch__item--active';?>">Все задачи</a>
+                <a href="/?sort=day" class="tasks-switch__item <?php echo ($_GET['sort'] == 'day') ?'tasks-switch__item--active':'';?>">Повестка дня</a>
+                <a href="/?sort=tomorrow" class="tasks-switch__item <?php echo ($_GET['sort'] == 'tomorrow') ?'tasks-switch__item--active':'';?>">Завтра</a>
+                <a href="/?sort=late" class="tasks-switch__item <?php echo ($_GET['sort'] == 'late') ?'tasks-switch__item--active':'';?>">Просроченные</a>
             </nav>
 
             <label class="checkbox">
