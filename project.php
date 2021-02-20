@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
 include_once('./helpers.php');
 $current_user = $_SESSION['user']['id'];
-$con = mysqli_connect("localhost", "root", "root", "my_deal");
+$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
 mysqli_set_charset($con, "utf8");
 
 if ($con == false) {

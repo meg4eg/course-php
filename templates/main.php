@@ -2,7 +2,6 @@
 <div class="content">
     <section class="content__side">
         <h2 class="content__side-heading">Проекты</h2>
-
         <nav class="main-navigation">
             <ul class="main-navigation__list">
                 <?php foreach ($projects as $key => $value) : $category = $value['project_name'];
