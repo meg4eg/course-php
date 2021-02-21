@@ -2,6 +2,7 @@
 <div class="content">
     <section class="content__side">
         <h2 class="content__side-heading">Проекты</h2>
+
         <nav class="main-navigation">
             <ul class="main-navigation__list">
                 <?php foreach ($projects as $key => $value) : $category = $value['project_name'];
@@ -35,7 +36,6 @@
             </nav>
 
             <label class="checkbox">
-                <!--добавить сюда атрибут "checked", если переменная $show_complete_tasks равна единице-->
                 <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php echo ($show_complete_tasks == 1 ? '' : 'checked') ?>>
                 <span class="checkbox__text">Показывать выполненные</span>
             </label>
@@ -44,20 +44,24 @@
         <table class="tasks">
         
             <?php foreach ($tasks as $key => $val) : $file = $val['file'];
+                $idTask = $val['task_id'];
                 $nameTask = $val['task_name'];
                 $dateTask = $val['done_time'];
                 $completeTask = $val['done']; {
-                    if ($completeTask && $show_complete_tasks == 1) {
+                    if ($completeTask  == "Y" && $show_complete_tasks == 1) {
                         continue;
                     }
                 } ?>
-                <tr class="tasks__item task <?php echo ($completeTask && $show_complete_tasks == 0 ? 'task--completed ' : '');
+                <tr class="tasks__item task <?php echo ($completeTask == 'N' ? '' : 'task--completed ');
                                             echo (strtotime($dateTask) - time() <= 0 && !empty($dateTask) ? 'task--important' : ''); ?>">
                     <td class="task__select">
-                        <label class="checkbox task__checkbox">
-                            <input class="checkbox__input visually-hidden" type="checkbox" <?php echo ($completeTask == true ? 'checked' : '') ?>>
-                            <span class="checkbox__text"><?php echo (htmlspecialchars($nameTask)) ?></span>
-                        </label>
+                        <form class="form" action="index.php" method="post">
+                            <label class="checkbox task__checkbox">
+                                <input type="hidden" name="check" value="<?php echo $idTask ?>">
+                                <input class="checkbox__input visually-hidden" name="check" value="<?php echo $idTask ?>" onchange="form.submit()" type="checkbox" <?php echo ($completeTask == 'Y' ? 'checked' : '')?>>
+                                <span class="checkbox__text"><?php echo (htmlspecialchars($nameTask)); ?></span>
+                            </label>
+                        </form>
                     </td>
 
                     <td class="task__file">

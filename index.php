@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
 mysqli_set_charset($con, "utf8");
 
@@ -53,13 +54,40 @@ if ($con == false) {
         }
         
         // задачи
-        $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE user_id = $current_user AND $show_task";
+        $sql = "SELECT task_name, done, file, done_time, project_id, task_id FROM tasks WHERE user_id = $current_user AND $show_task";
         $result = mysqli_query($con, $sql);
         if ($result) {
             $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
         } else {
             print("Ошибка2 " . mysqli_error($con));
         }
+        // выполнение задачи
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $form = $_POST;
+            
+            if ($form['check']) { 
+                $check = $form['check'];
+                $test = "SELECT done FROM tasks WHERE task_id = '$check'";
+                $result = mysqli_query($con, $test);
+                $done = mysqli_fetch_assoc($result);
+                if ($done['done'] == 'Y') {                  
+                    $sql = "UPDATE tasks SET done = 'N' WHERE task_id = '$check'";
+                    $result = mysqli_query($con, $sql);
+                    if ($result){
+                        header("Location: /index.php");
+                    }
+                }
+                elseif ($done['done'] == 'N') {                  
+                    $sql = "UPDATE tasks SET done = 'Y' WHERE task_id = '$check'";
+                    $result = mysqli_query($con, $sql);
+                    if ($result){
+                        header("Location: /index.php");
+                    }
+                }
+                
+            }
+        }
+        // поиск по задачам
         $search = $_GET['search'] ?? '';
         if ($search) {
             $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE MATCH(task_name) AGAINST(?)";
