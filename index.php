@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-
+include_once('./helpers.php');
 $con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
 mysqli_set_charset($con, "utf8");
 
@@ -10,7 +10,7 @@ if ($con == false) {
 } else {
     if (isset($_SESSION['user'])) {
         $current_user = $_SESSION['user']['id'];
-        include_once('./helpers.php');
+        
         $params = $_GET;
         $params['project_id'] = '';
         $scriptname = pathinfo(__FILE__, PATHINFO_BASENAME);
