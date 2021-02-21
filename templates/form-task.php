@@ -35,7 +35,7 @@
                 <?php $classname = isset($errors['project']) ? 'form__input--error' : ''; ?>
                 <select class="form__input form__input--select <?= $classname; ?>" name="project" id="project">
                   <?php foreach ($projects as $value) : $project_name = $value['project_name'] ?>
-                    <option value="<?= $value['project_id'] ?>" <?php if ($value['project_id'] == $_POST['project']): ?>selected<?php endif; ?>><?php echo (htmlspecialchars($project_name)); ?></option>
+                    <option value="<?= $value['project_id'] ?>" <?php if ($value['project_id'] == isset($_POST['project'])): ?>selected<?php endif; ?>><?php echo (htmlspecialchars($project_name)); ?></option>
                   <?php endforeach ?>
                 </select>
               </div>
