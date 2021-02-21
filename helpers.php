@@ -176,6 +176,15 @@ function validateCategory($name, $allowed_list) {
     return null;
 }
 
+function validateCat($name, $allowed_list) {
+    $id = $_POST[$name];
+
+    if (in_array($id, $allowed_list)) {
+        return 'Указана существующая категория';
+    }
+    return null;
+}
+
 function validateDate($name) {
 
     if (strtotime($_POST[$name]) < strtotime(date('Y-m-d')) && !empty($_POST[$name])) {
