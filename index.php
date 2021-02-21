@@ -18,7 +18,14 @@ if ($con == false) {
         $url = "/" . $scriptname . "?" . $query;
 
         $show_task = 'user_id = ' . $current_user;
-
+// var_dump($_GET['show_completed']);
+//         $show_complete_tasks = '';
+//         if (!isset($_GET['show_completed']) == 0) {
+//             $show_complete_tasks = 1;
+//         } 
+//         elseif (isset($_GET['show_completed']) == 1)  {
+//             $show_complete_tasks = 0;
+//         }
         // фильтр по дням
         if (isset($_GET['sort']) && $_GET['sort'] == 'day') {
             $show_task = 'done_time = CURDATE()';
@@ -90,7 +97,7 @@ if ($con == false) {
         // поиск по задачам
         $search = $_GET['search'] ?? '';
         if ($search) {
-            $sql = "SELECT task_name, done, file, done_time, project_id FROM tasks WHERE MATCH(task_name) AGAINST(?)";
+            $sql = "SELECT task_name, done, file, done_time, project_id, task_id FROM tasks WHERE MATCH(task_name) AGAINST(?) AND user_id = $current_user";
             $stmt = db_get_prepare_stmt($con, $sql, [$search]);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
