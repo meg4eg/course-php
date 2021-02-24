@@ -53,7 +53,7 @@
                     }
                 } ?>
                 <tr class="tasks__item task <?php echo ($completeTask == 'N' ? '' : 'task--completed ');
-                                            echo (strtotime($dateTask) - time() <= 0 && !empty($dateTask) ? 'task--important' : ''); ?>">
+                                            echo (strtotime($dateTask) - time() <= 0 && !empty($dateTask) ? 'task--important ' : ''); ?>">
                     <td class="task__select">
                         <form class="form" action="index.php" method="post">
                             <label class="checkbox task__checkbox">

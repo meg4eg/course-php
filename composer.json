@@ -1,0 +1,12 @@
+{
+    "name": "737/course-php",
+    "authors": [
+        {
+            "name": "r.zryachev",
+            "email": "meg4eg@gmail.com"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "^6.0"
+    }
+}
