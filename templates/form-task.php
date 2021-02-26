@@ -9,12 +9,12 @@
                   $url = $value['url'] ?>
                   <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
                     <a class="main-navigation__list-item-link" href="<?php echo ($url . $pr_id) ?>"><?php echo (htmlspecialchars($category))  ?></a>
-                    <span class="main-navigation__list-item-count"><?php taskCount($tasks, $pr_id) ?></span>
+                    <span class="main-navigation__list-item-count"><?php echo(taskCount($tasks, $pr_id)) ?></span>
                   </li>
                 <?php endforeach ?>
               </ul>
             </nav>
-            <a class="button button--transparent button--plus content__side-button" href="/project.php" target="project_add">Добавить проект</a>
+            <a class="button button--transparent button--plus content__side-button" href="project.php" target="project_add">Добавить проект</a>
           </section>
 
           <main class="content__main">

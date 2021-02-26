@@ -10,7 +10,7 @@
                     $url = $value['url'] ?>
                     <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
                         <a class="main-navigation__list-item-link" href="<?php echo ($url . $pr_id) ?>"><?php echo (htmlspecialchars($category)) ?></a>
-                        <span class="main-navigation__list-item-count"><?php taskCount($tasks, $pr_id) ?></span>
+                        <span class="main-navigation__list-item-count"><?php echo(taskCount($countTasks, $pr_id)) ?></span>
                     </li>
                 <?php endforeach ?>
             </ul>
@@ -36,6 +36,7 @@
             </nav>
 
             <label class="checkbox">
+                
                 <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php echo ($show_complete_tasks == 1 ? '' : 'checked') ?>>
                 <span class="checkbox__text">Показывать выполненные</span>
             </label>
@@ -44,16 +45,16 @@
         <table class="tasks">
         
             <?php foreach ($tasks as $key => $val) : $file = $val['file'];
-                $idTask = $val['task_id'];
                 $nameTask = $val['task_name'];
                 $dateTask = $val['done_time'];
-                $completeTask = $val['done']; {
+                $completeTask = $val['done'];
+                $idTask = $val['task_id']; {
                     if ($completeTask  == "Y" && $show_complete_tasks == 1) {
                         continue;
                     }
                 } ?>
                 <tr class="tasks__item task <?php echo ($completeTask == 'N' ? '' : 'task--completed ');
-                                            echo (strtotime($dateTask) - time() <= 0 && !empty($dateTask) ? 'task--important ' : ''); ?>">
+                                            echo (strtotime($dateTask) - time() <= 0 && !empty($dateTask) ? 'task--important' : ''); ?>">
                     <td class="task__select">
                         <form class="form" action="index.php" method="post">
                             <label class="checkbox task__checkbox">
