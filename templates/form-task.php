@@ -9,7 +9,7 @@
                   $url = $value['url'] ?>
                   <li class="main-navigation__list-item <?php echo ($pr_id == $_GET['project_id'] ? 'main-navigation__list-item--active' : '') ?>">
                     <a class="main-navigation__list-item-link" href="<?php echo ($url . $pr_id) ?>"><?php echo (htmlspecialchars($category))  ?></a>
-                    <span class="main-navigation__list-item-count"><?php echo(taskCount($tasks, $pr_id)) ?></span>
+                    <span class="main-navigation__list-item-count"><?php echo(taskCount($countTasks, $pr_id)) ?></span>
                   </li>
                 <?php endforeach ?>
               </ul>

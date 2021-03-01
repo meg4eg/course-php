@@ -1,12 +1,12 @@
 <?php
-session_start();
+require_once('init.php');
+
 if (isset($_SESSION['user'])) {
   header('Location: /index.php');
   exit();
 }
+
 include_once('./helpers.php');
-$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
-mysqli_set_charset($con, "utf8");
 
 $errors = [];
 
@@ -16,7 +16,6 @@ if ($con == false){
 else {
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $form = $_POST;
-    
 
     $email = mysqli_real_escape_string($con, $form['email']);
     $sql = "SELECT * FROM users WHERE email = '$email'";

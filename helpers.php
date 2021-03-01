@@ -146,14 +146,13 @@ function include_template($name, array $data = []) { // определяем ф�
 
 function taskCount($arr, $projectName) {
     $count = 0;
-    foreach ($arr as $key => $value) {
-        foreach ($value as $v) {
-        if ($v == $projectName) {
+    foreach ($arr as $value) {
+        if ($value['project_id'] == $projectName) {
             $count++;
          } 
-        }
     }
-    echo $count; 
+
+    return $count; 
 }
 
 function validateFilled($name) {

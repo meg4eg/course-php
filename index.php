@@ -1,40 +1,13 @@
 <?php
-
-session_start();
-
+require_once('init.php');
 include_once('./helpers.php');
-$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
-mysqli_set_charset($con, "utf8");
 
 if ($con == false) {
     print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
 } else {
     if (isset($_SESSION['user'])) {
         $current_user = $_SESSION['user']['id'];
-
-        $params = $_GET;
-        $params['project_id'] = '';
-        $scriptname = pathinfo(__FILE__, PATHINFO_BASENAME);
-        $query = http_build_query($params);
-        $url = "/" . $scriptname . "?" . $query;
-
-        $show_task = 'user_id = ' . $current_user;
-        
-        // список проектов для юзера 
-        $sql = "SELECT project_name, project_id FROM projects WHERE user_id = $current_user";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            
-            
-            foreach ($projects as $key => $value) {
-                $projects[$key]['url'] = $url;
-            }
-
-        } else {
-            print("Ошибка3 " . mysqli_error($con));
-        }
-
+        require_once('sql.php');
         // фильтр по дням
         if (isset($_GET['sort']) && $_GET['sort'] == 'day') {
             $show_task = 'done_time = CURDATE()';
@@ -58,23 +31,7 @@ if ($con == false) {
                 $show_task = 'project_id=' . 0;
             }
         }
-        // Имя активного юзера
-        $sql = "SELECT name FROM users WHERE id = $current_user";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            $user_name = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        } else {
-            print("Ошибка1 " . mysqli_error($con));
-        }
-
-        // задачи
-        $sql = "SELECT task_name, done, file, done_time, project_id, task_id FROM tasks WHERE user_id = $current_user";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            $countTasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        } else {
-            print("Ошибка2 " . mysqli_error($con));
-        }
+        //задачи для поиска
         $sql = "SELECT task_name, done, file, done_time, project_id, task_id FROM tasks WHERE user_id = $current_user AND $show_task";
         $result = mysqli_query($con, $sql);
         if ($result) {
@@ -82,7 +39,6 @@ if ($con == false) {
         } else {
             print("Ошибка2 " . mysqli_error($con));
         }
-
         // выполнение задачи
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $form = $_POST;
@@ -107,7 +63,6 @@ if ($con == false) {
                 }
             }
         }
-
         // поиск по задачам
         $search = $_GET['search'] ?? '';
         if ($search) {
@@ -119,7 +74,6 @@ if ($con == false) {
         }
     }
 }
-
 
 if (isset($_SESSION['user'])) {
     print(include_template('layout.php', ['dynamic' => include_template('main.php', ['countTasks' => $countTasks, 'tasks' => $tasks, 'projects' => $projects]), 'mainTitle' => 'Дела в порядке', 'user_name' => $user_name]));

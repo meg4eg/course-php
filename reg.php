@@ -1,13 +1,12 @@
 <?php
-session_start();
+require_once('init.php');
+
 if (isset($_SESSION['user'])) {
   header('Location: /index.php');
   exit();
 }
-include_once('./helpers.php');
 
-$con = mysqli_connect("localhost", "id15990969_root", "mFr0e@M&-kGxo^fG", "id15990969_my_deal");
-mysqli_set_charset($con, "utf8");
+include_once('./helpers.php');
 
 $tpl_data = [];
 $errors = [];
@@ -15,7 +14,6 @@ $errors = [];
 if ($con == false) {
   print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
 } else {
-
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $form = $_POST;
 
@@ -69,8 +67,5 @@ if ($con == false) {
     $content = include_template('register.php', $errors);
   }
 }
-
-
-
 
 print(include_template('layout.php', ['dynamic' => $content, 'mainTitle' => 'Дела в порядке']));
