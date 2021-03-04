@@ -11,7 +11,8 @@ if ($con == false) {
   print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
 } else {
   require_once('sql.php');
-
+  $projects_ids = [];
+  $projects_ids = array_column($projects, 'project_id');
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $form = $_POST;
 
